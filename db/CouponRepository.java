@@ -15,9 +15,7 @@ public interface CouponRepository extends JpaRepository<Coupon, Integer> {
 	ArrayList<Coupon> getCouponsByCompanyId(int id);
 	void deleteCouponsByCompanyId(int company_id);
 	Coupon getCouponByCompanyIdAndTitle(int companyId, String title);
-	
-	
-	
+
 	ArrayList<Coupon> getCouponsByCategoryName(Category categoryName);
 	ArrayList<Coupon> getCouponsByPriceLessThanEqual(double maxPrice);
 	

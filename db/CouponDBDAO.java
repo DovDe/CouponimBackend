@@ -59,6 +59,7 @@ public class CouponDBDAO {
 	public ArrayList<Coupon>getCouponsByCustomer(Customer cust){
 		return (ArrayList<Coupon>) coupRepo.getCouponsByCustomer(cust);
 	}
+	
 	public ArrayList<Coupon> getCouponsByCompanyId(int id){
 		return coupRepo.getCouponsByCompanyId(id);
 	}

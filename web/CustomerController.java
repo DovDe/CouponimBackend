@@ -74,6 +74,7 @@ public class CustomerController {
 		return new ResponseEntity<String>("Session Timeout",HttpStatus.UNAUTHORIZED);
 	}
 	
+
 	@GetMapping(path="/coupon/{token}")
 	public ResponseEntity<?> getAllCoupons(@PathVariable("token")String token){
 		Session session = isActive(token);
@@ -87,7 +88,7 @@ public class CustomerController {
 	
 	
 	@GetMapping(path="/coupon/category/{cat}/{token}")
-	public ResponseEntity<?> getCustomerCoupons(@PathVariable("cat") Category cat, @PathVariable("token") String token){
+	public ResponseEntity<?> getPurchadsedCustomerCouponsByCategory(@PathVariable("cat") Category cat, @PathVariable("token") String token){
 		Session session = isActive(token);
 		if(session != null) {
 			session.setLastAccessed(System.currentTimeMillis());
@@ -97,8 +98,19 @@ public class CustomerController {
 		return new ResponseEntity<String>("Session Timeout",HttpStatus.UNAUTHORIZED);
 	}
 	
+	@GetMapping(path="/all/coupon/category/{cat}/{token}")
+	public ResponseEntity<?> getAllCustomerCustomerCouponsByCategory(@PathVariable("cat") Category cat, @PathVariable("token") String token){
+		Session session = isActive(token);
+		if(session != null) {
+			session.setLastAccessed(System.currentTimeMillis());
+			ArrayList<Coupon> coupons =custF.getCouponsByCategory(cat);
+			return new ResponseEntity<List<Coupon>>(coupons,HttpStatus.OK);
+		}
+		return new ResponseEntity<String>("Session Timeout",HttpStatus.UNAUTHORIZED);
+	}
+	
 	@GetMapping(path="/coupon/maxprice/{max}/{token}")
-	public ResponseEntity<?> getCustomerCoupons(@PathVariable("max") double max, @PathVariable("token") String token){
+	public ResponseEntity<?> getPurchasedCustomerCouponsByPrice(@PathVariable("max") double max, @PathVariable("token") String token){
 		Session session = isActive(token);
 		if(session != null) {
 			session.setLastAccessed(System.currentTimeMillis());
@@ -108,6 +120,16 @@ public class CustomerController {
 		return new ResponseEntity<String>("Session Timeout",HttpStatus.UNAUTHORIZED);
 	}
 	
+	@GetMapping(path="/all/coupon/maxprice/{max}/{token}")
+	public ResponseEntity<?> getCustomerCoupons(@PathVariable("max") double max, @PathVariable("token") String token){
+		Session session = isActive(token);
+		if(session != null) {
+			session.setLastAccessed(System.currentTimeMillis());
+			ArrayList<Coupon> coupons =custF.getCouponsByMaxPrice(max);
+			return new ResponseEntity<List<Coupon>>(coupons,HttpStatus.OK);
+		}
+		return new ResponseEntity<String>("Session Timeout",HttpStatus.UNAUTHORIZED);
+	}
 	@GetMapping(path="/{token}")
 	public ResponseEntity<?> getCustomerDetails( @PathVariable String token){
 		Session session = isActive(token);

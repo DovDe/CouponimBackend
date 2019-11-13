@@ -48,6 +48,7 @@ public class LoginController {
 			session.setFacade(facade);
 			session.setLastAccessed(lastAccessed);
 			tokensMap.put(token, session); 
+			
 			return new ResponseEntity<>("{\"token\":\"" +token + "\"}",HttpStatus.OK);
 		}catch(EmailPasswordMismatch | SQLException | CouponSystemException e) {
 			return new ResponseEntity<>(e.getMessage(),HttpStatus.UNAUTHORIZED);		

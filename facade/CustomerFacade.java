@@ -68,15 +68,30 @@ public class CustomerFacade extends ClientFacade {
 	public ArrayList<Coupon> getAllCustomerCoupons(){
 		return coupDB.getCouponsByCustomer(this.getCustomerDetails());
 	}
+	
+
 	//***********************************
 
 	public ArrayList<Coupon> getAllCustomerCouponsByCategory(Category category){
 		return coupDB.getCouponsByCustomerIdAndCategoryName(customerId, category);
 	}
+	
+	//***********************************
+	
+	public ArrayList<Coupon> getCouponsByCategory(Category category){
+		return coupDB.getCouponsByCategoryName(category);
+
+		
+	}
 	//***********************************
 	
 	public ArrayList<Coupon> getAllCustomerCouponsByMaxPrice(double maxPrice){
 		return coupDB.getCouponsByCustomerIdAndPriceLessThanEqual(customerId,maxPrice);
+	}
+	//***********************************
+	
+	public ArrayList<Coupon> getCouponsByMaxPrice(double maxPrice){
+		return coupDB.getCouponsByPriceLessThan(maxPrice);
 	}
 	//***********************************
 
