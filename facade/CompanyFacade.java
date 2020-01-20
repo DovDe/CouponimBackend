@@ -73,7 +73,6 @@ public class CompanyFacade extends ClientFacade {
 	public void updateCoupon(Coupon coup) throws CouponAlreadyExists {
 		Coupon coupFromDB = coupDB.getCouponById(coup.getId());
 		if( coupFromDB == null) throw new CouponAlreadyExists();
-		
 		coupFromDB.setAmount(coup.getAmount());
 		coupFromDB.setCategoryName(coup.getCategoryName());
 		coupFromDB.setDescription(coup.getDescription());

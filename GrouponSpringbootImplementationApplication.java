@@ -33,7 +33,7 @@ public class GrouponSpringbootImplementationApplication {
 	public static void main(String[] args)  {
 		ConfigurableApplicationContext context = SpringApplication.run(GrouponSpringbootImplementationApplication.class, args);
 		
-		Test test = context.getBean(Test.class);
+//		Test test = context.getBean(Test.class);
 		CouponExpirationDailyJob cleaner = context.getBean(CouponExpirationDailyJob.class);
 		SessionExpiration tokenCleaner = context.getBean(SessionExpiration.class);
 		

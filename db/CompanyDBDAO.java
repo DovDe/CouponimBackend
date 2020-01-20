@@ -5,10 +5,11 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import com.dovdekeyser.groupon_springboot_web.beans.Company;
 
-@Component
+@Repository
 public class CompanyDBDAO {
 
 	//************************DEPENDANCY ENJECTION *********************************************************	
@@ -63,7 +64,7 @@ public class CompanyDBDAO {
 	//************************ READ ***********************************************************************
 	public Company getCompanybyEmail(String email) {
 		return compRepo.getCompanyByEmail(email);	
-	}
+	}	
 	public Company getCompanyByName(String name) {
 		return compRepo.getCompanyByName(name);
 	}
